@@ -13,15 +13,17 @@ def main():
     # TODO: Add GPU support. This line of code might be helpful.
     # device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
-    print("Epochs:", constants.EPOCHS)
-    print("Batch size:", constants.BATCH_SIZE)
+    print("Epochs: ", constants.EPOCHS)
+    print("Batch size: ", constants.BATCH_SIZE)
+    print("Hidden layer size: ", constants.HIDDEN_DIM)
 
     # Initalize dataset and model. Then train the model!
     data_path = "train.csv" #TODO: make sure you have train.csv downloaded in your project! this assumes it is in the project's root directory (ie the same directory as main) but you can change this as you please
 
+    # TODO: Split the train and validation data
     train_dataset = StartingDataset(data_path)
     val_dataset = StartingDataset(data_path)
-    model = StartingNetwork()
+    model = StartingNetwork(train_dataset.sequences.shape[1], constants.HIDDEN_DIM)
     starting_train(
         train_dataset=train_dataset,
         val_dataset=val_dataset,

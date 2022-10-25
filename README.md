@@ -21,7 +21,9 @@ python main.py
 
 ### Running the Code on Google Colab
 
-[This notebook](https://colab.research.google.com/drive/1cyIbRoubY0ZpXoGvOVSgO8kM4gFM31Op?usp=sharing) will walk you through setting the skeleton code up on Google Colab. Remember to make a copy!
+[This notebook](https://colab.research.google.com/drive/1cyIbRoubY0ZpXoGvOVSgO8kM4gFM31Op?usp=sharing) is the original made by ACM AI.
+
+[This notebook](https://colab.research.google.com/drive/1JRmrT_FSVYsozpP4P_xjOBR7rERmaRP7?usp=sharing) is Joshua's copy, you should have edit access.
 
 **Note:** Google Colab may terminate your session after a few hours, so be careful. Consider adding torch.save to your training loop to save model weights regularly.
 
@@ -69,4 +71,3 @@ python main.py
 2. Join either the [Quora NLP Competition](https://www.kaggle.com/competitions/quora-insincere-questions-classification/data).
 
 3. In the data tab, you should be able to download the data as a zip file.
-
