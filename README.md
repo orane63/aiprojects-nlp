@@ -1,9 +1,13 @@
 # Team Autobots: ACM AI Projects
 
-Contributors:
+## Contributors
+
 Joshua Zhu (https://github.com/joshuazhu17)
+
 William Zhao (https://github.com/orane63)
+
 Joey Huang (https://github.com/jhng8)
+
 Arjun Pawar (https://github.com/ajpaw)
 
 ## Project Description
