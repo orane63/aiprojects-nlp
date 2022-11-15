@@ -16,6 +16,6 @@ This repository contains our model for the past Kaggle competition Quora Insince
 
 ### Running the Code on Google Colab
 
-[This notebook](https://colab.research.google.com/drive/1JRmrT_FSVYsozpP4P_xjOBR7rERmaRP7?usp=sharing) is the test branch, UCLA students should have view access.
+[This notebook](https://colab.research.google.com/drive/1JRmrT_FSVYsozpP4P_xjOBR7rERmaRP7?usp=sharing) is the GloVe LSTM branch, UCLA students should have view access.
 
-[This notebook](https://colab.research.google.com/drive/1T8mbtBkrCvKKN2KV92_6eS7SWbVKRye8?usp=sharing) is the stable branch, UCLA students should have view access.
+[This notebook](https://colab.research.google.com/drive/1T8mbtBkrCvKKN2KV92_6eS7SWbVKRye8?usp=sharing) is the bag of words branch, UCLA students should have view access.
