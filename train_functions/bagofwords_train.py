@@ -4,11 +4,9 @@ import torch.optim as optim
 from tqdm import tqdm
 import numpy as np
 
-
-def starting_train(train_dataset, val_dataset, model, hyperparameters, n_eval):
+def bagofwords_train(train_dataset, val_dataset, model, hyperparameters, n_eval):
     """
     Trains and evaluates a model.
-
     Args:
         train_dataset:   PyTorch dataset containing training data.
         val_dataset:     PyTorch dataset containing validation data.
@@ -32,7 +30,7 @@ def starting_train(train_dataset, val_dataset, model, hyperparameters, n_eval):
 
     # Initalize optimizer (for gradient descent) and loss function
     optimizer = optim.Adam(model.parameters())
-    loss_fn = nn.CrossEntropyLoss()
+    loss_fn = nn.BCELoss()
 
     for epoch in range(epochs):
         print(f"Epoch {epoch + 1} of {epochs}")
@@ -52,43 +50,34 @@ def starting_train(train_dataset, val_dataset, model, hyperparameters, n_eval):
             loss.backward()
             optimizer.step()
 
-            # Periodically evaluate our model + log to Tensorboard
+            # Periodically evaluate our model
             if batch % n_eval == 0:
+                # Set the save_dir to the directory where you want to save your models
+                save_dir = ""
+                name = "BagOfWords" + str(batch) + ".pt"
+                torch.save(model, save_dir + name)
+
                 # Compute training loss and accuracy.
                 accuracy = compute_accuracy(pred, y)
-                print("loss: ", loss)
-                print("accuracy: ", accuracy)
+                print("batch loss: ", loss)
+                print("batch accuracy: ", accuracy)
 
                 # Compute validation loss and accuracy.
-                val_loss, val_accuracy = evaluate(val_loader, model, loss_fn)
+                val_loss, val_accuracy, f1 = bagofwords_evaluate(val_loader, model, loss_fn)
                 print("validation loss: ", val_loss)
                 print("validation accuracy: ", val_accuracy)
-
+                print("f1 score: ", f1)
                 # TODO: Log the results to Tensorboard.
 
 
 
 def compute_accuracy(outputs, labels):
-    """
-    Computes the accuracy of a model's predictions.
-
-    Example input:
-        outputs: [0.7, 0.9, 0.3, 0.2]
-        labels:  [1, 1, 0, 1]
-
-    Example output:
-        0.75
-    """
-
     n_correct = (torch.round(outputs) == labels).sum().item()
     n_total = len(outputs)
     return n_correct / n_total
 
 
-def evaluate(val_loader, model, loss_fn):
-    """
-    Computes the loss and accuracy of a model on the validation dataset.
-    """
+def bagofwords_evaluate(val_loader, model, loss_fn):
     with torch.no_grad():
         # There should only be one batch (the entire validation set)
         for (X, y) in val_loader:
@@ -98,5 +87,6 @@ def evaluate(val_loader, model, loss_fn):
             pred = model(X)
             pred = np.squeeze(pred)
             loss = loss_fn(pred, y)
+            f1 = f1_score(torch.round(pred), y, average='macro')
             accuracy = compute_accuracy(pred, y)
-            return loss, accuracy
+            return loss, accuracy, f1

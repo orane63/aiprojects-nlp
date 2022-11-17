@@ -12,7 +12,7 @@ Arjun Pawar (https://github.com/ajpaw)
 
 ## Project Description
 
-This repository contains our model for the past Kaggle competition Quora Insincere Questions Classification (https://www.kaggle.com/competitions/quora-insincere-questions-classification). UCLA ACM AI has provided the skeleton code for a basic bag-of-words model, but all changes beyond that in this repository have been made purely by our team.
+This repository contains our different models for the past Kaggle competition Quora Insincere Questions Classification (https://www.kaggle.com/competitions/quora-insincere-questions-classification). UCLA ACM AI has provided the skeleton code for a basic bag-of-words model, but all changes beyond that in this repository have been made purely by our team.
 
 ### Running the Code on Google Colab
 
